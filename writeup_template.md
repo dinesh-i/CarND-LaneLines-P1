@@ -24,12 +24,12 @@ The goals / steps of this project are the following:
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
 My pipeline consisted of the following steps. 
-Convert to gray scale
-Apply Gaussian Blur
-Apply Canny Edge Detection
-Select region of interest
-Use Hough Transform to draw lines on the image
-Overlay the edge detected image to the original image
+* Convert to gray scale
+* Apply Gaussian Blur
+* Apply Canny Edge Detection
+* Select region of interest
+* Use Hough Transform to draw lines on the image
+* Overlay the edge detected image to the original image
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function as follows:
 Identified the slope of every line and separated them to positive and negative slopes. This will separate the lines to left and right hand side lanes.
