@@ -31,23 +31,24 @@ My pipeline consisted of the following steps.
 * Use Hough Transform to draw lines on the image
 * Overlay the edge detected image to the original image
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function as follows:
-Identified the slope of every line and separated them to positive and negative slopes. This will separate the lines to left and right hand side lanes.
+**In order to draw a single line on the left and right lanes, I modified the draw_lines() function as follows:
 
-Filtered out the lines where the slope was in the range [-0.3, 0.3] to avoid any horizontal lines taking part in the lane finding logic. These horizontal lines can appear due to different factors like any objects on the road, shadow etc.
+* Identified the slope of every line and separated them to positive and negative slopes. This will separate the lines to left and right hand side lanes.
 
-The rest of the line segments in each of the sides were averaged out to polyfit function was used to identify the slope and intercept of both the lanes.
+* Filtered out the lines where the slope was in the range [-0.3, 0.3] to avoid any horizontal lines taking part in the lane finding logic. These horizontal lines can appear due to different factors like any objects on the road, shadow etc.
 
-The y co-ordinates of both the annotated lanes start from the y_max position(the maximum length of the image). We need to find the x co-ordinates of the annotated lines. We do this by using the formula 
+* The rest of the line segments in each of the sides were averaged out to polyfit function was used to identify the slope and intercept of both the lanes.
+
+* The y co-ordinates of both the annotated lanes start from the y_max position(the maximum length of the image). We need to find the x co-ordinates of the annotated lines. We do this by using the formula 
 	y = mx + c 
 which is rearranged to get x using
 	x = (y - c)/m
 
-Below formula is used to find the start and end x co-ordinates for the lane with positive slope
+* Below formula is used to find the start and end x co-ordinates for the lane with positive slope
     pos_startX = (startY - pos_intercept) / pos_slope
     pos_endX = (endY - pos_intercept) / pos_slope
 	
-Similarly, below formula is used for the lane with negative slope
+* Similarly, below formula is used for the lane with negative slope
     neg_startX = (startY - neg_intercept) / neg_slope
     neg_endX = (endY - neg_intercept) / neg_slope
 	
